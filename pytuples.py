@@ -16,7 +16,10 @@ def get_user_detail(userid , name):
 
 
 def add_user(user , user_detail):
-    users.append(user(**user_detail))
+    if isinstance(user_detail , dict):
+        users.append(user(**user_detail))
+    elif isinstance(user_detail , tuple):
+        users.append(user(*user_detail))
 
 
 def main():
@@ -27,6 +30,8 @@ def main():
     user_detail = get_user_detail(2 , 'Swathi')
     add_user(user , user_detail)
     user_detail = get_user_detail(3 , 'Geetha')
+    add_user(user , user_detail)
+    user_detail = 4 , 'Mohan'
     add_user(user , user_detail)
 
     for item in users:
